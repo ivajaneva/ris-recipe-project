@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="recipe-details">
+    <!-- Recipe Image -->
+    <img id="recipe-image" src="" alt="Recipe Image">
+
+    <!-- Recipe Name -->
+    <h2 id="recipe-name"></h2>
+
+    <!-- Duration -->
+    <p><strong>Duration:</strong> <span id="recipe-duration"></span> minutes</p>
+
+    <!-- Description -->
+    <p id="recipe-description"></p>
+
+    <!-- Ingredients -->
+    <div>
+        <strong>Ingredients:</strong>
+        <ul id="recipe-ingredients"></ul>
+    </div>
+
+    <!-- Instructions -->
+    <div>
+        <strong>Instructions:</strong>
+        <ol id="recipe-instructions"></ol>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+        <button id="delete-btn">Delete</button>
+        <button id="edit-btn">Update</button>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="js/recipe.js"></script>
+</body>
+</html>

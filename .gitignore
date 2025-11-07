@@ -1,0 +1,28 @@
+# ---------------------------
+# Java / Spring Boot
+# ---------------------------
+*.class
+*.jar
+*.war
+/vaja1Ris/target/
+/vaja1Ris/generated-sources/
+/vaja1Ris/generated-test-sources/
+/vaja1Ris/*.iml
+/vaja1Ris/.mvn/wrapper/maven-wrapper.properties
+
+# ---------------------------
+# Node / Frontend
+# ---------------------------
+/frontend/node_modules/
+
+# ---------------------------
+# IDE / Editor
+# ---------------------------
+/.vscode/
+/.idea/
+/*.log
+
+# ---------------------------
+# Environment / temp
+# ---------------------------
+.env

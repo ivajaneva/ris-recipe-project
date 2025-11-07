@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#recipes-container {
+    display: flex;
+    flex-wrap: wrap;       /* allows wrapping to the next line */
+    gap: 20px;             /* space between cards */
+    justify-content: center; /* optional: center the row */
+}
+
+.recipe-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: 30%;             /* 3 per row */
+    box-sizing: border-box; /* include padding in width */
+}
+
+
+.recipe-card:hover {
+    transform: scale(1.05);
+}
+
+.recipe-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.recipe-card h2 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+.recipe-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: #5cb85c;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-popup input,
+.form-popup textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.recipe-link {
+    text-decoration: none; /* removes underline */
+    color: inherit; /* keeps text color same as rest */
+    display: block; /* makes the whole card clickable */
+}
+
+.recipe-link:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+/* Image styling */
+#recipe-image {
+    width: 100%;           /* fills the container width */
+    max-width: 500px;      /* limits maximum width */
+    height: auto;          /* maintains aspect ratio */
+    object-fit: contain;   /* shows entire image without cropping */
+    border-radius: 10px;   /* rounded corners */
+    display: block;
+    margin: 0 auto 15px;   /* centers image and adds bottom spacing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    background-color: #f8f8f8; /* optional: background for images with empty space */
+}
+
+
+
+/* Ordered list for instructions */
+#recipe-instructions ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+#recipe-instructions li {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Bold numbers automatically */
+#recipe-instructions li::marker {
+    font-weight: bold;
+    color: #5cb85c;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>All Recipes</h1>
+<button id="addRecipeBtn">➕ Add Recipe</button>
+
+<div id="recipes-container"></div>
+<!-- Hidden popup form -->
+<div id="recipeFormContainer" class="form-popup">
+    <form id="recipeForm">
+        <h2>Add New Recipe</h2>
+        <label>Name:</label>
+        <input type="text" id="name" required>
+
+        <label>Description:</label>
+        <textarea id="description" required></textarea>
+
+        <label>Duration (minutes):</label>
+        <input type="number" id="duration" required>
+
+        <label>Image URL:</label>
+        <input type="text" id="imageUrl">
+
+        <label>Ingredients:</label>
+        <textarea id="ingredients"></textarea>
+
+        <button type="submit">Save Recipe</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+    </form>
+</div>
+    <!-- Example recipe card -->
+   <!-- <div class="recipe-card">
+        <img src="https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg" alt="Pancakes">
+        <h2>Pancakes</h2>
+        <p><strong>Duration:</strong> 15 minutes</p>
+        <p><strong>Ingredients:</strong> 200g flour, 2 eggs, 250ml milk, 1 tbsp sugar, butter for frying</p>
+        <p><strong>Description:</strong> Fluffy and delicious pancakes perfect for breakfast.</p>
+    </div>
+
+    <div class="recipe-card">
+        <img src="https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg" alt="Spaghetti Bolognese">
+        <h2>Spaghetti Bolognese</h2>
+        <p><strong>Duration:</strong> 30 minutes</p>
+        <p><strong>Ingredients:</strong> 250g spaghetti, 200g minced beef, tomato sauce, garlic, olive oil, basil, salt</p>
+        <p><strong>Description:</strong> Classic Italian pasta with rich meat sauce.</p>
+    </div>
+--><script src="js/scripts.js"></script>
+    <!-- Add more recipe cards dynamically later -->
+</body>
+</html>
