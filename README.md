@@ -73,9 +73,9 @@ Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vm
 4. Odprite brskalnik in pojdite na: http://localhost:3000
 
 ### Dostop do aplikacije:
--**Frontend:** http://localhost:3000
--**Backend API:** http://localhost:8083
--**MySQL baza:** localhost:3309
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8083
+- **MySQL baza:** localhost:3309
 
 ## Navodila za razvijalce / Git
 
