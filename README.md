@@ -8,6 +8,7 @@ Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vm
 - Nađa Tomović
 
 ## Struktura projekta
+```
 ── ris-recipe-project/
    ├── vaja1Ris/                 # Backend – Spring Boot projekt
    │   ├── src/main/java/...     # Java izvorna koda (controllerji, modeli, DAO)
@@ -20,6 +21,7 @@ Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vm
    │   ├── package.json          # Odvisnosti in skripte za zagon
    │
    └── README.md
+   ```
 
 
 ## Razvojno okolje in tehnologije
