@@ -63,7 +63,7 @@ Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vm
 1. Odprite terminal v `frontend/` mapi projekta.
 
 2. Namestite potrebne odvisnosti:
-```bash
+   ```bash
    npm install 
    ```
 3. Zaženite aplikacijo v razvojni obliki:
@@ -84,23 +84,22 @@ MySQL baza: localhost:3309
 Če želite prispevati k projektu ali delati lokalno kopijo:
 
 1. Klonirajte repozitorij:
-```bash
-git clone <https://github.com/ivajaneva/ris-recipe-project>
-```
+   ```bash
+   git clone <https://github.com/ivajaneva/ris-recipe-project>
+   ```
 2. Pojdite v mapo projekta:
-```bash   
-cd ris-recipe-project
-```
+   ```bash   
+   cd ris-recipe-project
+   ```
 3. Dodajte spremembe in naredite commit
-```bash   
-git add .
-git commit -m "Opis sprememb"
-```
+   ```bash   
+   git add .
+   git commit -m "Opis sprememb"
+   ```
 4. Potisnite spremembe v GitHub:
-```bash   
-git push origin main
-
-```
+   ```bash   
+   git push origin main
+   ```
 
 
  
