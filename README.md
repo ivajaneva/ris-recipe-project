@@ -49,7 +49,7 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 - Imena spremenljivk in metod so v camelCase, razredi v PascalCase.
   Koda je urejena in berljiva, vsak razred ali komponenta ima jasno odgovornost.
 
-# Besednjak (Vocabulary)
+# Besednjak
 
 ## SPLOŠNI IZRAZI
 
@@ -71,6 +71,19 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 | Branje/Prikaz        | Read           | Prikazovanje obstoječih podatkov  |
 | Posodabljanje        | Update         | Spreminjanje obstoječih podatkov  |
 | Brisanje             | Delete         | Trajno odstranjevanje podatkov    |
+
+## PODATKOVNI MODEL - RECIPE TABELA
+
+| Polje        | Tip                | Angleški izraz   | Opis / Notes                                                                 |
+|--------------|------------------|----------------|----------------------------------------------------------------------------|
+| ID           | INT, AUTO_INCREMENT | Id             | Edinstvena identifikacijska številka (Primary Key)                         |
+| Ime/Naslov   | VARCHAR           | Name           | Naziv recepta                                                              |
+| Opis         | VARCHAR           | Description    | Kratek opis recepta                                                        |
+| Trajanje     | INT               | Duration       | Čas priprave recepta v **minutah**                                        |
+| URL slike    | VARCHAR           | Image URL      | Povezava do slike recepta (valid URL)                                      |
+| Sestavine    | VARCHAR           | Ingredients    | Seznam potrebnih sestavin, npr. ločen z vejicami                           |
+| Navodila     | VARCHAR           | Instructions   | Podroben opis priprave jedi                                               |
+| Kategorija   | VARCHAR           | Category       | Vrsta jedi. Možne vrednosti: **Sweets (Sladice), Salads (Solate), Meat (Meso), Pasta (Testenine), Soup (Juha)** |
 
 ## FUNKCIONALNOSTI - PREGLED
 
