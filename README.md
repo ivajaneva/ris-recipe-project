@@ -7,6 +7,11 @@ Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vm
 >Vaša digitalna kuharska knjiga za vaše najljubše recepte – vse na enem mestu,
 vedno pri roki za ustvarjanje, urejanje in uporabo.
 
+## Diagram poteka uporabe (DPU)
+
+![Diagram poteka uporabe](docs/dpu.png)
+
+
 ## Člani ekipe
 - Iva Janeva
 - Nađa Tomović
