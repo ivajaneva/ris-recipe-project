@@ -49,6 +49,112 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 - Imena spremenljivk in metod so v camelCase, razredi v PascalCase.
   Koda je urejena in berljiva, vsak razred ali komponenta ima jasno odgovornost.
 
+# Besednjak (Vocabulary)
+
+## SPLOŠNI IZRAZI
+
+| Slovenski izraz         | Angleški izraz       | Opis                                       |
+|------------------------|-------------------|-------------------------------------------|
+| Aplikacija za recepte   | Recipe Application | Sistem za upravljanje kulinaričnih receptov |
+| Uporabnik               | User               | Oseba, ki uporablja aplikacijo            |
+| Neregistriran uporabnik | Unregistered User  | Uporabnik brez računa, ki lahko samo pregleduje |
+| Registriran uporabnik   | Registered User    | Uporabnik z računom, ki ima polne pravice |
+| Administrator (Admin)   | Administrator      | Uporabnik z nadzornimi pravicami         |
+| Recept                  | Recipe             | Navodilo za pripravo jedi                 |
+| Kategorija              | Category           | Skupina receptov (sladice, solate, meso, testenine, juha). V bazi se shranjujejo angleški izrazi. |
+
+## CRUD OPERACIJ
+
+| Slovenski izraz      | Angleški izraz | Opis                               |
+|---------------------|----------------|-----------------------------------|
+| Dodajanje            | Create         | Ustvarjanje novega zapisa         |
+| Branje/Prikaz        | Read           | Prikazovanje obstoječih podatkov  |
+| Posodabljanje        | Update         | Spreminjanje obstoječih podatkov  |
+| Brisanje             | Delete         | Trajno odstranjevanje podatkov    |
+
+## FUNKCIONALNOSTI - PREGLED
+
+| Slovenski izraz                  | Angleški izraz          | Opis                                         |
+|---------------------------------|-----------------------|---------------------------------------------|
+| Ogled seznama receptov           | View Recipe List      | Prikaz vseh receptov v obliki seznama       |
+| Ogled podrobnosti recepta        | View Recipe Details   | Podroben prikaz posameznega recepta        |
+| Iskanje receptov                 | Search Recipes        | Iskanje receptov po ključnih besedah       |
+| Filtriranje po kategoriji        | Filter by Category    | Prikaz receptov določene kategorije        |
+| Pregled komentarjev              | View Comments         | Prikaz komentarjev k receptu               |
+| Pregled uporabnikov              | View Users            | Prikaz seznama uporabnikov (admin)         |
+
+## FUNKCIONALNOSTI - UPRAVLJANJE RECEPTOV
+
+| Slovenski izraz                  | Angleški izraz        | Opis                                         |
+|---------------------------------|--------------------|---------------------------------------------|
+| Dodajanje novih receptov         | Add New Recipe     | Vnos novega recepta v sistem               |
+| Posodabljanje svojih receptov    | Update Own Recipes | Urejanje lastnih objavljenih receptov      |
+| Brisanje svojih receptov         | Delete Own Recipes | Odstranjevanje lastnih receptov            |
+| Brisanje receptov                | Delete Recipes     | Odstranjevanje kateregakoli recepta (admin)|
+| Odobravanje receptov             | Approve Recipes    | Potrditev receptov pred objavo (admin)     |
+| Objavljivanje receptov           | Publish Recipes    | Objava receptov v sistem                    |
+| Dodajanje receptov med priljubljene | Add to Favorites | Označevanje receptov kot priljubljenih     |
+| Ogled priljubljenih receptov     | View Favorite Recipes | Prikaz vseh priljubljenih receptov       |
+
+## FUNKCIONALNOSTI - KOMENTARJI
+
+| Slovenski izraz          | Angleški izraz      | Opis                                      |
+|--------------------------|------------------|------------------------------------------|
+| Dodajanje komentarjev     | Add Comments      | Objavljanje komentarjev k receptom       |
+| Brisanje svojih komentarjev | Delete Own Comments | Odstranjevanje lastnih komentarjev    |
+| Izbris komentarjev        | Delete Comments   | Odstranjevanje kateregakoli komentarja (admin) |
+
+## FUNKCIONALNOSTI - UPORABNIŠKI PROFIL
+
+| Slovenski izraz          | Angleški izraz | Opis                                      |
+|--------------------------|----------------|------------------------------------------|
+| Ogled profila            | View Profile    | Prikaz uporabniškega profila             |
+| Urejanje profila         | Edit Profile    | Spreminjanje podatkov profila            |
+| Izbris uporabnikov       | Delete Users    | Odstranjevanje uporabniških računov (admin) |
+
+## TEHNIČNI IZRAZI - BACKEND
+
+| Slovenski izraz       | Angleški izraz | Opis                                        |
+|----------------------|----------------|--------------------------------------------|
+| Strežnik             | Server/Backend | Zaledni del aplikacije (Spring Boot)       |
+| Končna točka          | Endpoint       | API URL za dostop do funkcionalnosti       |
+| Baza podatkov         | Database       | MySQL sistem za shranjevanje podatkov      |
+| Tabela               | Table           | Struktura v bazi podatkov                  |
+| Primarni ključ        | Primary Key    | Edinstveni identifikator zapisa            |
+
+## TEHNIČNI IZRAZI - FRONTEND
+
+| Slovenski izraz       | Angleški izraz | Opis                                        |
+|----------------------|----------------|--------------------------------------------|
+| Uporabniški vmesnik  | User Interface (UI) | Vizualni del aplikacije (React)      |
+| Obrazec              | Form           | Vnosno polje za podatke                    |
+| Gumb                 | Button         | Interaktivni element za dejanja            |
+| Izbirnik             | Dropdown       | Meni za izbiro možnosti                     |
+| Filter               | Filter         | Orodje za zožanje rezultatov               |
+
+## PODATKOVNI MODEL - RECIPE TABELA
+
+| Polje      | Tip            | Opis |
+|------------|----------------|------|
+| ID         | INT, AUTO_INCREMENT | Edinstvena identifikacijska številka |
+| Ime/Naslov | VARCHAR        | Naziv recepta |
+| Opis       | VARCHAR        | Kratek opis recepta |
+| Trajanje   | INT            | Čas priprave v minutah |
+| URL slike  | VARCHAR        | Povezava do slike recepta |
+| Sestavine  | VARCHAR        | Seznam potrebnih sestavin |
+| Navodila   | VARCHAR        | Podroben postopek priprave |
+| Kategorija | VARCHAR        | Vrsta jedi: Sweets, Salads, Meat, Pasta, Soup |
+
+## ODNOSI V UML DIAGRAMU
+
+| Slovenski izraz | Angleški izraz | Opis |
+|----------------|----------------|-----|
+| Include        | Include        | Obvezna funkcionalnost (vedno se izvede) |
+| Extend         | Extend         | Dodatna/opcijska funkcionalnost         |
+| Akter          | Actor          | Oseba ali sistem, ki uporablja funkcionalnost |
+| Primer uporabe | Use Case       | Funkcionalnost, ki jo sistem ponuja     |
+| Meja sistema   | System Boundary | Okvir, ki označuje obseg sistema       |
+
 ## Navodila za namestitev
 
 ### Predpogoji
