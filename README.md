@@ -35,7 +35,7 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 
 ## Razvojno okolje in tehnologije
 - **Frontend:** React.js 18.2.0, uporabniški vmesnik
-- **Backend:** Java 17+, Spring Boot 3.2.0, REST API za delo z recepti
+- **Backend:** Java 17+, Spring Boot 3.5.6 REST API za delo z recepti
 - **Baza podatkov:** MySQL 8.0.32, data.sql - začetni podatki ob zagonu
 - **Docker:** Docker 24.0.5 in Docker Compose 2.21.0 za enostavno namestitev in zagon aplikacije
 - **Maven:** Maven 3.9.1 za upravljanje backend odvisnosti
@@ -48,53 +48,52 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 - **SQL:** standardne SQL izjave za ustvarjanje in vstavljanje podatkov
 - Imena spremenljivk in metod so v camelCase, razredi v PascalCase.
   Koda je urejena in berljiva, vsak razred ali komponenta ima jasno odgovornost.
-
 # Besednjak
 
 ## SPLOŠNI IZRAZI
 
-| Slovenski izraz         | Angleški izraz       | Opis                                       |
-|------------------------|-------------------|-------------------------------------------|
-| Aplikacija za recepte   | Recipe Application | Sistem za upravljanje kulinaričnih receptov |
-| Uporabnik               | User               | Oseba, ki uporablja aplikacijo            |
-| Neregistriran uporabnik | Unregistered User  | Uporabnik brez računa, ki lahko samo pregleduje |
-| Registriran uporabnik   | Registered User    | Uporabnik z računom, ki ima polne pravice |
-| Administrator (Admin)   | Administrator      | Uporabnik z nadzornimi pravicami         |
-| Recept                  | Recipe             | Navodilo za pripravo jedi                 |
-| Kategorija              | Category           | Skupina receptov (sladice, solate, meso, testenine, juha). V bazi se shranjujejo angleški izrazi. |
+| Slovenski izraz         | Angleški izraz       | Opis                                                                 |
+|------------------------|-------------------|----------------------------------------------------------------------|
+| Aplikacija za recepte   | Recipe Application | Sistem za upravljanje kulinaričnih receptov                          |
+| Uporabnik               | User               | Oseba, ki uporablja aplikacijo                                       |
+| Neregistriran uporabnik | Unregistered User  | Uporabnik brez računa, ki lahko samo pregleduje in filtrira recepte  |
+| Registriran uporabnik   | Registered User    | Uporabnik z računom, ki lahko dodaja, ureja ali briše svoje recepte, ogleda profil in priljubljene recepte |
+| Administrator           | Administrator      | Uporabnik z nadzornimi pravicami (admin)                             |
+| Recept                  | Recipe             | Navodilo za pripravo jedi s sestavinami, časom priprave in navodili |
+| Kategorija              | Category           | Skupina receptov: Sweets, Salads, Meat, Pasta, Soup (v bazi se shranjuje angleški izraz) |
 
 ## CRUD OPERACIJ
 
-| Slovenski izraz      | Angleški izraz | Opis                               |
-|---------------------|----------------|-----------------------------------|
-| Dodajanje            | Create         | Ustvarjanje novega zapisa         |
-| Branje/Prikaz        | Read           | Prikazovanje obstoječih podatkov  |
-| Posodabljanje        | Update         | Spreminjanje obstoječih podatkov  |
-| Brisanje             | Delete         | Trajno odstranjevanje podatkov    |
+| Slovenski izraz      | Angleški izraz | Opis                             |
+|---------------------|----------------|----------------------------------|
+| Dodajanje            | Create         | Ustvarjanje novega zapisa       |
+| Branje/Prikaz        | Read           | Prikazovanje obstoječih podatkov |
+| Posodabljanje        | Update         | Spreminjanje obstoječih podatkov |
+| Brisanje             | Delete         | Trajno odstranjevanje podatkov   |
 
 ## PODATKOVNI MODEL - RECIPE TABELA
 
 | Polje        | Tip                | Angleški izraz   | Opis / Notes                                                                 |
 |--------------|------------------|----------------|----------------------------------------------------------------------------|
-| ID           | INT, AUTO_INCREMENT | Id             | Edinstvena identifikacijska številka (Primary Key)                         |
+| ID           | INT, AUTO_INCREMENT | Id             | Edinstvena identifikacijska številka (Primary Key)                          |
 | Ime/Naslov   | VARCHAR           | Name           | Naziv recepta                                                              |
 | Opis         | VARCHAR           | Description    | Kratek opis recepta                                                        |
 | Trajanje     | INT               | Duration       | Čas priprave recepta v **minutah**                                        |
 | URL slike    | VARCHAR           | Image URL      | Povezava do slike recepta (valid URL)                                      |
-| Sestavine    | VARCHAR           | Ingredients    | Seznam potrebnih sestavin, npr. ločen z vejicami                           |
+| Sestavine    | VARCHAR           | Ingredients    | Seznam potrebnih sestavin za pripravo, ločen z vejicami                    |
 | Navodila     | VARCHAR           | Instructions   | Podroben opis priprave jedi                                               |
 | Kategorija   | VARCHAR           | Category       | Vrsta jedi. Možne vrednosti: **Sweets (Sladice), Salads (Solate), Meat (Meso), Pasta (Testenine), Soup (Juha)** |
 
 ## FUNKCIONALNOSTI - PREGLED
 
-| Slovenski izraz                  | Angleški izraz          | Opis                                         |
-|---------------------------------|-----------------------|---------------------------------------------|
-| Ogled seznama receptov           | View Recipe List      | Prikaz vseh receptov v obliki seznama       |
-| Ogled podrobnosti recepta        | View Recipe Details   | Podroben prikaz posameznega recepta        |
-| Iskanje receptov                 | Search Recipes        | Iskanje receptov po ključnih besedah       |
-| Filtriranje po kategoriji        | Filter by Category    | Prikaz receptov določene kategorije        |
-| Pregled komentarjev              | View Comments         | Prikaz komentarjev k receptu               |
-| Pregled uporabnikov              | View Users            | Prikaz seznama uporabnikov (admin)         |
+| Slovenski izraz                  | Angleški izraz          | Opis                                          |
+|---------------------------------|-----------------------|-----------------------------------------------|
+| Ogled seznama receptov           | View Recipe List      | Prikaz vseh receptov v obliki seznama         |
+| Ogled podrobnosti recepta        | View Recipe Details   | Podroben prikaz posameznega recepta           |
+| Iskanje receptov                 | Search Recipes        | Iskanje receptov po ključnih besedah         |
+| Filtriranje po kategoriji        | Filter by Category    | Prikaz receptov določene kategorije          |
+| Pregled komentarjev              | View Comments         | Prikaz komentarjev k receptu                 |
+| Pregled uporabnikov              | View Users            | Prikaz seznama uporabnikov (admin)          |
 
 ## FUNKCIONALNOSTI - UPRAVLJANJE RECEPTOV
 
@@ -111,18 +110,18 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 
 ## FUNKCIONALNOSTI - KOMENTARJI
 
-| Slovenski izraz          | Angleški izraz      | Opis                                      |
-|--------------------------|------------------|------------------------------------------|
-| Dodajanje komentarjev     | Add Comments      | Objavljanje komentarjev k receptom       |
-| Brisanje svojih komentarjev | Delete Own Comments | Odstranjevanje lastnih komentarjev    |
+| Slovenski izraz          | Angleški izraz      | Opis                                    |
+|--------------------------|------------------|-----------------------------------------|
+| Dodajanje komentarjev     | Add Comments      | Objavljanje komentarjev k receptom     |
+| Brisanje svojih komentarjev | Delete Own Comments | Odstranjevanje lastnih komentarjev     |
 | Izbris komentarjev        | Delete Comments   | Odstranjevanje kateregakoli komentarja (admin) |
 
 ## FUNKCIONALNOSTI - UPORABNIŠKI PROFIL
 
-| Slovenski izraz          | Angleški izraz | Opis                                      |
-|--------------------------|----------------|------------------------------------------|
-| Ogled profila            | View Profile    | Prikaz uporabniškega profila             |
-| Urejanje profila         | Edit Profile    | Spreminjanje podatkov profila            |
+| Slovenski izraz          | Angleški izraz | Opis                            |
+|--------------------------|----------------|---------------------------------|
+| Ogled profila            | View Profile    | Prikaz uporabniškega profila    |
+| Urejanje profila         | Edit Profile    | Spreminjanje podatkov profila   |
 | Izbris uporabnikov       | Delete Users    | Odstranjevanje uporabniških računov (admin) |
 
 ## TEHNIČNI IZRAZI - BACKEND
@@ -145,28 +144,15 @@ vedno pri roki za ustvarjanje, urejanje in uporabo.
 | Izbirnik             | Dropdown       | Meni za izbiro možnosti                     |
 | Filter               | Filter         | Orodje za zožanje rezultatov               |
 
-## PODATKOVNI MODEL - RECIPE TABELA
-
-| Polje      | Tip            | Opis |
-|------------|----------------|------|
-| ID         | INT, AUTO_INCREMENT | Edinstvena identifikacijska številka |
-| Ime/Naslov | VARCHAR        | Naziv recepta |
-| Opis       | VARCHAR        | Kratek opis recepta |
-| Trajanje   | INT            | Čas priprave v minutah |
-| URL slike  | VARCHAR        | Povezava do slike recepta |
-| Sestavine  | VARCHAR        | Seznam potrebnih sestavin |
-| Navodila   | VARCHAR        | Podroben postopek priprave |
-| Kategorija | VARCHAR        | Vrsta jedi: Sweets, Salads, Meat, Pasta, Soup |
-
 ## ODNOSI V UML DIAGRAMU
 
-| Slovenski izraz | Angleški izraz | Opis |
-|----------------|----------------|-----|
-| Include        | Include        | Obvezna funkcionalnost (vedno se izvede) |
-| Extend         | Extend         | Dodatna/opcijska funkcionalnost         |
-| Akter          | Actor          | Oseba ali sistem, ki uporablja funkcionalnost |
-| Primer uporabe | Use Case       | Funkcionalnost, ki jo sistem ponuja     |
-| Meja sistema   | System Boundary | Okvir, ki označuje obseg sistema       |
+| Slovenski izraz | Angleški izraz | Opis                                                        |
+|----------------|----------------|-------------------------------------------------------------|
+| Include        | Include        | Obvezna funkcionalnost (vedno se izvede)                   |
+| Extend         | Extend         | Dodatna/opcijska funkcionalnost, če uporabnik želi         |
+| Akter          | Actor          | Oseba ali sistem, ki uporablja funkcionalnost             |
+| Primer uporabe | Use Case       | Funkcionalnost, ki jo sistem ponuja                        |
+| Meja sistema   | System Boundary | Okvir, ki označuje obseg sistema                           |
 
 ## Navodila za namestitev
 
