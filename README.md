@@ -4,8 +4,8 @@ Projekt RIS Recipe Project je spletna aplikacija za upravljanje in prikaz recept
 Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vmesnika (frontend).
 
 **Vizija:**
->Vaša digitalna kuharska knjiga za vaše najljubše recepte – vse na enem mestu,
-vedno pri roki za ustvarjanje, urejanje in uporabo.
+>Vaša digitalna kuharska knjiga za vaše najljubše recepte – vse na enem mestu, vedno pri roki za ustvarjanje, urejanje in uporabo, 
+> ki uporabnikom omogoča enostavno iskanje, organiziranje in deljenje receptov ter navdihuje nove ideje v kuhinji.
 
 ## Diagram poteka uporabe (DPU)
 
