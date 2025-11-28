@@ -11,6 +11,35 @@ Sestavljen je iz Spring Boot zalednega dela (backend) in React uporabniškega vm
 
 ![Diagram poteka uporabe](docs/dpu.png)
 
+## Razredni Diagram (Class Diagram)
+
+##  Kratek opis razrednega diagrama
+
+Razredni diagram prikazuje osnovno strukturo aplikacije za recepte ter povezuje vse glavne funkcionalnosti, opisane v DPU. Diagram vključuje razrede, njihove atribute, metode ter relacije (dedovanje, asociacije, kompozicije in odvisnosti).
+
+###  Opis razredov
+
+- **User** – Osnovni razred za vse uporabnike. Vsebuje podatke o prijavi ter omogoča ogled in iskanje receptov.
+- **RegisteredUser** – Podeduje User. Lahko dodaja, ureja in briše svoje recepte, piše komentarje, upravlja priljubljene recepte ter ureja svoj profil.
+- **Admin** – Podeduje User. Ima administrativne pravice: odobravanje receptov, brisanje receptov in komentarjev ter pregled uporabnikov.
+- **Recipe** – Predstavlja recept z vsemi podatki (naslov, opis, sestavine, navodila, kategorija, avtor). Vsebuje seznam komentarjev ter omogoča dodajanje/brisanje komentarjev in izvoz recepta v PDF.
+- **Comment** – Komentar uporabnika. Vsebuje besedilo, čas ustvarjanja in avtorja. Je v kompoziciji z razredom Recipe.
+- **Profile** – Profil registriranega uporabnika (ime, opis, avatar). Je v kompoziciji z razredom RegisteredUser.
+- **PDF** – Omogoča generiranje PDF datoteke iz recepta.
+- **Category (enum)** – Seznam kategorij receptov (npr. BREAKFAST, LUNCH, DINNER ...).
+
+###  Relacije med razredi
+
+- **RegisteredUser → Recipe**: 1 uporabnik lahko ustvari več receptov.
+- **Recipe → Comment**: Recipe vsebuje komentarje (kompozicija).
+- **RegisteredUser → Comment**: RegisteredUser piše komentarje.
+- **RegisteredUser → Profile**: RegisteredUser vsebuje svoj profil (kompozicija).
+- **Admin → Recipe/Comment**: Admin moderira vsebino (odvisnost).
+- **PDF → Recipe**: PDF uporablja podatke recepta za generiranje datoteke.
+
+
+![Diagram poteka uporabe](docs/ClassDigram.png)
+
 
 ## Člani ekipe
 - Iva Janeva
