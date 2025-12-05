@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import vaja1.ris.vaja1Ris.dao.RecipesDao;
 import vaja1.ris.vaja1Ris.models.Recipe;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
+import vaja1.ris.vaja1Ris.services.PdfLayoutUtil;
+import vaja1.ris.vaja1Ris.services.PdfRecipeFormatter;
 
 
 
@@ -37,62 +39,15 @@ public class PdfExportService {
 
         PDPageContentStream content = new PDPageContentStream(document, page);
 
-        new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
+        float y = 750;
 
+        y = PdfRecipeFormatter.drawTitle(content, y, recipe);
 
-
-
-        int y = 750; // start height
-
-        // Title
-        content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 20);
-        content.beginText();
-        content.newLineAtOffset(50, y);
-        content.showText(recipe.getName());
-        content.endText();
-
-        y -= 40;
-
-        // Title font (bold)
-        content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 20);
-
-// Normal font
-        content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
-
-
-        // Description
-        content.beginText();
-        content.newLineAtOffset(50, y);
-        content.showText("Description: " + recipe.getDescription());
-        content.endText();
-        y -= 20;
-
-        // Duration
-        content.beginText();
-        content.newLineAtOffset(50, y);
-        content.showText("Duration: " + recipe.getDuration() + " minutes");
-        content.endText();
-        y -= 20;
-
-        // Category
-        content.beginText();
-        content.newLineAtOffset(50, y);
-        content.showText("Category: " + recipe.getCategory());
-        content.endText();
-        y -= 20;
-
-        // Ingredients
-        content.beginText();
-        content.newLineAtOffset(50, y);
-        content.showText("Ingredients: " + recipe.getIngredients());
-        content.endText();
-        y -= 20;
-
-        // Instructions
-        content.beginText();
-        content.newLineAtOffset(50, y);
-        content.showText("Instructions: " + recipe.getInstructions());
-        content.endText();
+        y = PdfRecipeFormatter.drawWrappedText(content, y,  "Description:", recipe.getDescription());
+        y = PdfRecipeFormatter.drawWrappedText(content, y, "Duration:", recipe.getDuration() + " minutes");
+        y = PdfRecipeFormatter.drawWrappedText(content, y, "Category:", recipe.getCategory());
+        y = PdfRecipeFormatter.drawWrappedText(content, y, "Ingredients:", recipe.getIngredients());
+        y = PdfRecipeFormatter.drawWrappedText(content, y, "Instructions:", recipe.getInstructions());
 
         content.close();
 
