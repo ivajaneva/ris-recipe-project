@@ -1,4 +1,4 @@
-# Use Java 17 base image (lightweight)
+
 FROM eclipse-temurin:17-jdk
 
 # Set working directory inside the container

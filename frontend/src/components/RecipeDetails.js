@@ -30,6 +30,17 @@ function RecipeDetails() {
             .then(data => setRecipe(data));
     };
 
+    const downloadRecipePdf = () => {
+        window.location.href = `http://localhost:8083/recipes/${id}/export/pdf`;
+    };
+
+    const printRecipePdf = () => {
+        window.open(`http://localhost:8083/recipes/${id}/print/pdf`, "_blank");
+    };
+
+
+
+
     if (!recipe) return <div className="loading">Loading...</div>;
 
     return (
@@ -76,6 +87,8 @@ function RecipeDetails() {
                     <div className="action-buttons">
                         <button className="edit-btn" onClick={() => setEditing(true)}>Edit Recipe</button>
                         <button className="delete-btn" onClick={deleteRecipe}>Delete Recipe</button>
+                        <button onClick={downloadRecipePdf}>Download PDF</button>
+                        <button onClick={printRecipePdf}>Print PDF</button>
                     </div>
                 </>
             )}
