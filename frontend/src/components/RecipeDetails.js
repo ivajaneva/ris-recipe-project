@@ -87,8 +87,8 @@ function RecipeDetails() {
                     <div className="action-buttons">
                         <button className="edit-btn" onClick={() => setEditing(true)}>Edit Recipe</button>
                         <button className="delete-btn" onClick={deleteRecipe}>Delete Recipe</button>
-                        <button onClick={downloadRecipePdf}>Download PDF</button>
-                        <button onClick={printRecipePdf}>Print PDF</button>
+                        <button className="preview-pdf-btn" onClick={printRecipePdf}>Preview PDF</button>
+                        <button className="download-pdf-btn" onClick={downloadRecipePdf}>Download PDF</button>
                     </div>
                 </>
             )}

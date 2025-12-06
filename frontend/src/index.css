@@ -341,7 +341,14 @@ button:first-of-type:hover {
 .delete-btn:hover {
     background-color: #c0392b;
 }
-
+.preview-pdf-btn{
+    background-color: #f39c12;
+    color: white;
+}
+.download-pdf-btn{
+    background-color: #f39c12;
+    color: white;
+}
 .edit-form-container {
     background: white;
     padding: 30px;
