@@ -2,9 +2,9 @@
 
 ## Člani skupine
 
-- **Iva Janeva 1** 
-- **Nađa Tomović 2** 
-- **Veljko Stojanović 3** 
+- **Iva Janeva** 
+- **Nađa Tomović** 
+- **Veljko Stojanović** 
 
 ---
 
