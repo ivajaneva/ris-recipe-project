@@ -33,10 +33,12 @@ Test je pomemben, ker zagotavlja, da sistem pravilno sprejema realne in smiselne
 
 ### 2. Test: neveljavne vrednosti trajanja recepta (negativni scenarij)
 
-Ta test preverja, ali se ob neveljavnih vrednostih trajanja (0, negativne vrednosti ali vrednosti večje od 1440 minut) sproži izjema `IllegalArgumentException`.
+Ta test preverja obnašanje sistema, kadar uporabnik poskuša dodati recept z neveljavnim trajanjem (npr. trajanje 0 minut).
 
-Tudi v tem primeru smo uporabili parameteriziran test.  
-Test je pomemben, ker preprečuje vnos napačnih ali nerealnih podatkov v sistem.
+V tem primeru mora kontroler zavrniti zahtevo in sprožiti izjemo  
+`ResponseStatusException` s statusno kodo **HTTP 400 (BAD_REQUEST)**.
+
+Test je pomemben, ker zagotavlja pravilno validacijo vhodnih podatkov ter preprečuje shranjevanje napačnih ali nerealnih podatkov v sistem.
 
 ---
 

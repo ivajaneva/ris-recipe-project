@@ -61,7 +61,6 @@ Razredni diagram prikazuje osnovno strukturo aplikacije za recepte ter povezuje 
    └── README.md
    ```
 
-
 ## Razvojno okolje in tehnologije
 - **Frontend:** React.js 18.2.0, uporabniški vmesnik
 - **Backend:** Java 17+, Spring Boot 3.5.6 REST API za delo z recepti
@@ -185,6 +184,23 @@ Razredni diagram prikazuje osnovno strukturo aplikacije za recepte ter povezuje 
 | Akter           | Actor            | Oseba ali sistem, ki uporablja funkcionalnost               |
 | Primer uporabe  | Use Case         | Funkcionalnost, ki jo sistem ponuja                         |
 | Meja sistema    | System Boundary  | Okvir, ki označuje obseg sistema                           |
+
+## Enotno testiranje (Unit testing)
+
+V okviru te naloge smo dodali enotne teste za zaledni del aplikacije (Spring Boot), s katerimi preverjamo pravilno delovanje funkcionalnosti ter obnašanje sistema v pozitivnih in negativnih scenarijih.
+
+Enotni testi se nahajajo v naslednji mapi:
+- `vaja1Ris/src/test/java/`
+
+Poleg enotnih testov smo v repozitorij dodali tudi novo mapo **testiranje**, ki vsebuje poročilo o testiranju:
+- `vaja1Ris/testiranje/porocilo_testiranja.md`
+
+V poročilu o testiranju so opisani ustvarjeni testi, njihova namembnost ter kratka analiza uspešnosti testiranja.
+
+Za zagon enotnih testov lokalno uporabite naslednji ukaz:
+```bash
+cd vaja1Ris
+mvn test
 
 ## Navodila za namestitev
 
