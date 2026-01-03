@@ -135,8 +135,8 @@ function RecipeDetails() {
                         <div className="ingredients-section">
                             <h2>Ingredients</h2>
                             <ul className="ingredients-list">
-                                {recipe.ingredients.split(',').map((ingredient, index) => (
-                                    <li key={index}>{ingredient.trim()}</li>
+                                {scaledIngredients.map((ingredient, index) => (
+                                    <li key={index}>{ingredient}</li>
                                 ))}
                             </ul>
                         </div>
