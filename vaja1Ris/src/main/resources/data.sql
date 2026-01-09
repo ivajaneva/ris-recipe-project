@@ -40,3 +40,43 @@ VALUES
      'https://www.themealdb.com/images/media/meals/stpuws1511191310.jpg',
      '500g tomatoes, 1 onion, 2 cloves garlic, 500ml vegetable broth, salt, pepper, olive oil',
      '1. Heat olive oil in a pot and sauté chopped onions and garlic until translucent. 2. Add chopped tomatoes and cook for 5-7 minutes. 3. Pour in vegetable broth and simmer for 10 minutes. 4. Blend the mixture until smooth using a hand blender or in batches in a regular blender. 5. Season with salt and pepper to taste. 6. Serve hot with a drizzle of cream or fresh basil for garnish.');
+INSERT INTO ingredient (name, calories, protein, carbs, fat, unit) VALUES
+-- Pancakes
+('flour', 364, 10, 76, 1, '100g'),
+('egg', 30, 3, 0.5, 2, 'piece'),
+('milk', 42, 3.4, 5, 1, '100ml'),
+('sugar', 387, 0, 100, 0, '100g'),
+('butter', 717, 0.9, 0.1, 81, '100g'),
+
+-- Spaghetti Bolognese
+('spaghetti', 158, 5.8, 31, 0.9, '100g'),
+('minced beef', 250, 26, 0, 20, '100g'),
+('tomato sauce', 29, 1.4, 7, 0.2, '100g'),
+('garlic', 149, 6.4, 33, 0.5, '100g'),
+('olive oil', 884, 0, 0, 100, '100g'),
+('basil', 23, 3, 2.7, 0.6, '10g'),
+('salt', 0, 0, 0, 0, '1g'),
+('pepper', 251, 10, 64, 3.3, '10g'),
+
+-- Greek Salad
+('tomato', 18, 1, 3.9, 0.2, '100g'),
+('cucumber', 16, 0.7, 3.6, 0.1, '100g'),
+('onion', 40, 1.1, 9, 0.1, '100g'),
+('feta cheese', 264, 14, 4, 21, '100g'),
+('black olives', 115, 0.8, 6, 11, '100g'),
+('oregano', 306, 11, 64, 10, '10g'),
+
+-- Pumpkin Pie
+('pumpkin', 26, 1, 6.5, 0.1, '100g'),
+('cream', 340, 2, 3, 36, '100ml'),
+('cinnamon', 247, 4, 81, 1.2, '10g'),
+('nutmeg', 525, 6, 49, 36, '10g'),
+('pie crust', 400, 6, 50, 20, '1 crust'),
+
+-- Carbonara
+('pancetta', 541, 37, 1, 42, '100g'),
+('grated parmesan', 431, 38, 4, 29, '100g'),
+
+-- Tomato Soup
+('vegetable broth', 5, 0.3, 1, 0, '100ml');
+

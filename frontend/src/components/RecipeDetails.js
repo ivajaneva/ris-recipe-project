@@ -6,15 +6,25 @@ function RecipeDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [recipe, setRecipe] = useState(null);
+    const [nutrition, setNutrition] = useState(null); // total nutrition
     const [editing, setEditing] = useState(false);
     const [portions, setPortions] = useState(1);
 
+    // Fetch recipe info
     useEffect(() => {
         fetch(`http://localhost:8083/recipes/${id}`)
             .then(res => res.json())
             .then(data => setRecipe(data))
             .catch(err => console.error(err));
     }, [id]);
+
+    // Fetch nutrition info based on portions
+    useEffect(() => {
+        fetch(`http://localhost:8083/ingredients/recipe/${id}/nutrition?portions=${portions}`)
+            .then(res => res.json())
+            .then(data => setNutrition(data))
+            .catch(err => console.error(err));
+    }, [id, portions]);
 
     const deleteRecipe = async () => {
         if (window.confirm("Are you sure you want to delete this recipe?")) {
@@ -31,54 +41,31 @@ function RecipeDetails() {
             .then(data => setRecipe(data));
     };
 
-    const downloadRecipePdf = () => {
-        window.location.href = `http://localhost:8083/recipes/${id}/export/pdf`;
-    };
-
-    const printRecipePdf = () => {
-        window.open(`http://localhost:8083/recipes/${id}/print/pdf`, "_blank");
-    };
-
     const parseIngredient = (text) => {
         const t = text.trim();
-
         const match = t.match(/^(\d+(?:[.,]\d+)?)(\s*[a-zA-ZčćžšđČĆŽŠĐ]+)?\s*(.*)$/);
-        if (!match)
-            return null;
-
+        if (!match) return null;
         const rawNum = match[1];
         const unit = (match[2] || "").trim();
         const rest = (match[3] || "").trim();
-
         const num = Number(rawNum.replace(",", "."));
-        if (Number.isNaN(num))
-            return null;
-
-        return {num, unit, rest};
+        if (Number.isNaN(num)) return null;
+        return { num, unit, rest };
     };
 
-    const formatNumber = (n) => {
-        return Number.isInteger(n) ? String(n) : String(Math.round(n*100)/100);
-    };
+    const formatNumber = (n) => Number.isInteger(n) ? String(n) : String(Math.round(n*100)/100);
 
     const scaledIngredients = useMemo(() => {
         if (!recipe?.ingredients) return [];
-
         const list = recipe.ingredients.split(",").map((x) => x.trim()).filter(Boolean);
-
         return list.map((ingredient) => {
             const parsed = parseIngredient(ingredient);
-
-            // if ingredient doesn't start with a number -> leave as is
             if (!parsed) return ingredient;
-
             const scaled = parsed.num * portions;
             const prefix = `${formatNumber(scaled)}${parsed.unit ? " " + parsed.unit : ""}`;
-
             return parsed.rest ? `${prefix} ${parsed.rest}` : prefix;
         });
     }, [recipe, portions]);
-
 
     if (!recipe) return <div className="loading">Loading...</div>;
 
@@ -102,41 +89,47 @@ function RecipeDetails() {
                             <p className="recipe-category"><strong>Category:</strong> {recipe.category || "No category"}</p>
 
                             <div style={{ marginTop: 12 }}>
-                                <label style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>
-                                    Portions:
-                                </label>
+                                <label style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>Portions:</label>
                                 <input
                                     type="number"
                                     min="1"
                                     step="1"
                                     value={portions}
                                     onChange={(e) => {
-                                        // allow empty while typing, but clamp to >= 1
                                         const val = e.target.value;
-                                        if (val === "") {
-                                            setPortions(1);
-                                            return;
-                                        }
+                                        if (val === "") { setPortions(1); return; }
                                         const n = parseInt(val, 10);
                                         setPortions(Number.isFinite(n) && n > 0 ? n : 1);
                                     }}
-                                    onBlur={() => {
-                                        // extra safety
-                                        if (!Number.isFinite(portions) || portions < 1) setPortions(1);
-                                    }}
+                                    onBlur={() => { if (!Number.isFinite(portions) || portions < 1) setPortions(1); }}
                                     style={{ width: 90, padding: "6px 8px" }}
                                 />
                             </div>
-
                         </div>
                     </div>
+<div className="ingredients-section">
+                                <h2>Nutrition</h2>
+                            {/* Display total nutrition */}
+                            {nutrition && (
+                                <div className="nutrition-summary-full">
+                                    <h3>Nutrition (for {portions} portion{portions > 1 ? "s" : ""})</h3>
+                                    <p><strong>Calories:</strong> {nutrition.totalCalories} kcal ({nutrition.percentageOfDaily.toFixed(1)}% of daily)</p>
+                                    <p><strong>Protein:</strong> {nutrition.totalProtein} g</p>
+                                    <p><strong>Carbs:</strong> {nutrition.totalCarbs} g</p>
+                                    <p><strong>Fat:</strong> {nutrition.totalFat} g</p>
+                                </div>
+                            )}
+</div>
+
+
+
 
                     <div className="recipe-content">
                         <div className="ingredients-section">
                             <h2>Ingredients</h2>
                             <ul className="ingredients-list">
-                                {recipe.ingredients.split(',').map((ingredient, index) => (
-                                    <li key={index}>{ingredient.trim()}</li>
+                                {scaledIngredients.map((ingredient, index) => (
+                                    <li key={index}>{ingredient}</li>
                                 ))}
                             </ul>
                         </div>
@@ -154,8 +147,8 @@ function RecipeDetails() {
                     <div className="action-buttons">
                         <button className="edit-btn" onClick={() => setEditing(true)}>Edit Recipe</button>
                         <button className="delete-btn" onClick={deleteRecipe}>Delete Recipe</button>
-                        <button className="preview-pdf-btn" onClick={printRecipePdf}>Preview PDF</button>
-                        <button className="download-pdf-btn" onClick={downloadRecipePdf}>Download PDF</button>
+                        <button className="preview-pdf-btn" onClick={() => window.open(`http://localhost:8083/recipes/${id}/print/pdf`, "_blank")}>Preview PDF</button>
+                        <button className="download-pdf-btn" onClick={() => window.location.href = `http://localhost:8083/recipes/${id}/export/pdf`}>Download PDF</button>
                     </div>
                 </>
             )}

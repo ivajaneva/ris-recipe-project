@@ -488,3 +488,13 @@ button:first-of-type:hover {
 #recipeForm select option {
     padding: 10px;
 }
+
+
+.nutrition-summary-full {
+    background-color: #ecf0f1;
+    padding: 15px 20px;
+    border-radius: 12px;
+
+    color: #2c3e50;
+}
+
