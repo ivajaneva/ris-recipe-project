@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function RecipeForm({ onSave, recipeToEdit }) {
+function RecipeForm({ onSave, recipeToEdit, onIngredientsChange }) {
     const [name, setName] = useState(recipeToEdit ? recipeToEdit.name : "");
     const [description, setDescription] = useState(recipeToEdit ? recipeToEdit.description : "");
     const [duration, setDuration] = useState(recipeToEdit ? recipeToEdit.duration : "");
@@ -43,7 +43,18 @@ function RecipeForm({ onSave, recipeToEdit }) {
             <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} required />
             <input type="number" placeholder="Duration (minutes)" value={duration} onChange={e => setDuration(e.target.value)} required />
             <input type="text" placeholder="Image URL" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
-            <textarea placeholder="Ingredients (separate with commas)" value={ingredients} onChange={e => setIngredients(e.target.value)} rows="3" />
+            <textarea
+                placeholder="Ingredients (separate with commas)"
+                value={ingredients}
+                onChange={e => {
+                    const value = e.target.value;
+                    setIngredients(value);
+                    if (onIngredientsChange) {
+                        onIngredientsChange(value);
+                    }
+                }}
+                rows="3"
+            />
             <textarea placeholder="Instructions" value={instructions} onChange={e => setInstructions(e.target.value)} rows="4" /> 
             <label>Category:</label>
              <select value={category} onChange={e => setCategory(e.target.value)}>

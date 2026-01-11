@@ -282,9 +282,55 @@ button:first-of-type:hover {
     padding-bottom: 8px;
 }
 
+.ingredients-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+button.edit-ingredients-btn {
+    background-color: #f39c12;
+    color: white;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+}
+
+button.edit-ingredients-btn:hover {
+    background-color: #e67e22;
+}
+
 .ingredients-list {
     list-style: none;
     padding: 0;
+}
+
+.ingredients-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ingredient-row {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 12px;
+    align-items: center;
+}
+
+.ingredient-row select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: white;
+}
+
+.ingredients-edit-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .ingredients-list li {
@@ -385,6 +431,10 @@ button:first-of-type:hover {
 
     .form-buttons {
         flex-direction: column;
+    }
+
+    .ingredient-row {
+        grid-template-columns: 1fr;
     }
 }
 /* Filter Styles */
