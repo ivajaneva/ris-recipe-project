@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import RecipeForm from "./RecipeForm";
+import { isFavorite, toggleFavorite } from "../utils/favorites";
 
 const AMOUNT_FACTORS = [0.25, 0.5, 1, 1.5, 2, 3, 4, 5];
 const AMOUNT_PATTERN = /^(\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+)/;
@@ -206,6 +207,10 @@ function RecipeDetails() {
     const [ingredientsEditing, setIngredientsEditing] = useState(false);
     const [ingredientsCatalog, setIngredientsCatalog] = useState([]);
     const [ingredientEdits, setIngredientEdits] = useState([]);
+    
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    const [favorite, setFavorite] = useState(false);
+    const [isToggling, setIsToggling] = useState(false);
 
     // Fetch recipe info
     useEffect(() => {
@@ -214,6 +219,13 @@ function RecipeDetails() {
             .then(data => setRecipe(data))
             .catch(err => console.error(err));
     }, [id]);
+
+    // Update favorite state when user or recipe changes
+    useEffect(() => {
+        if (user && id) {
+            setFavorite(isFavorite(user.id, parseInt(id, 10)));
+        }
+    }, [user, id]);
 
     // Fetch nutrition info based on portions and current ingredients
     useEffect(() => {
@@ -298,6 +310,20 @@ function RecipeDetails() {
         }
         setDraftIngredients(buildIngredientsString(ingredientEdits, ingredientsCatalog));
     }, [ingredientsEditing, ingredientEdits, ingredientsCatalog]);
+
+    const handleFavoriteToggle = async () => {
+        if (!user || isToggling || !id) return;
+        
+        setIsToggling(true);
+        try {
+            const newFavoriteState = await toggleFavorite(user.id, parseInt(id, 10), favorite);
+            setFavorite(newFavoriteState);
+        } catch (error) {
+            alert("Error updating favorite. Please try again.");
+        } finally {
+            setIsToggling(false);
+        }
+    };
 
     const deleteRecipe = async () => {
         if (window.confirm("Are you sure you want to delete this recipe?")) {
@@ -438,7 +464,21 @@ function RecipeDetails() {
                     <button className="back-button" onClick={() => navigate("/")}>← Back to Recipes</button>
 
                     <div className="recipe-header">
-                        <img src={recipe.imageUrl || "/placeholder-image.jpg"} alt={recipe.name} className="recipe-detail-image" />
+                        <div className="recipe-header-image-wrapper">
+                            <img src={recipe.imageUrl || "/placeholder-image.jpg"} alt={recipe.name} className="recipe-detail-image" />
+                            {user && (
+                                <button
+                                    className="favorite-btn"
+                                    onClick={handleFavoriteToggle}
+                                    disabled={isToggling}
+                                    title={favorite ? "Remove from favorites" : "Add to favorites"}
+                                    aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+                                    style={{ width: '56px', height: '56px', fontSize: '1.75rem' }}
+                                >
+                                    {favorite ? '❤️' : '🤍'}
+                                </button>
+                            )}
+                        </div>
                         <div className="recipe-info">
                             <h1>{recipe.name}</h1>
                             <p className="recipe-meta"><strong>Duration:</strong> {recipe.duration} minutes</p>
@@ -525,20 +565,26 @@ function RecipeDetails() {
                         </div>
                     </div>
 
-                    <div className="action-buttons">
+                    <div className="action-buttons action-buttons-bar">
                         <button
-                            className="edit-btn"
+                            className="btn btn-secondary"
                             onClick={() => {
                                 setDraftIngredients(recipe.ingredients || "");
                                 setEditing(true);
                             }}
                             disabled={ingredientsEditing}
                         >
-                            Edit Recipe
+                            ✏️ Edit Recipe
                         </button>
-                        <button className="delete-btn" onClick={deleteRecipe}>Delete Recipe</button>
-                        <button className="preview-pdf-btn" onClick={() => window.open(`http://localhost:8083/recipes/${id}/print/pdf`, "_blank")}>Preview PDF</button>
-                        <button className="download-pdf-btn" onClick={() => window.location.href = `http://localhost:8083/recipes/${id}/export/pdf`}>Download PDF</button>
+                        <button className="btn btn-danger" onClick={deleteRecipe}>
+                            🗑️ Delete Recipe
+                        </button>
+                        <button className="btn btn-outline" onClick={() => window.open(`http://localhost:8083/recipes/${id}/print/pdf`, "_blank")}>
+                            👁️ Preview PDF
+                        </button>
+                        <button className="btn btn-primary" onClick={() => window.location.href = `http://localhost:8083/recipes/${id}/export/pdf`}>
+                            📥 Download PDF
+                        </button>
                     </div>
                 </>
             )}

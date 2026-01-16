@@ -15,6 +15,18 @@ const Login = () => {
                 password
             });
             localStorage.setItem("currentUser", JSON.stringify(response.data));
+            
+            // Sync favorites from backend
+            try {
+                const favoritesResponse = await axios.get(`http://localhost:8083/users/${response.data.id}/favorites`);
+                const favorites = favoritesResponse.data || [];
+                localStorage.setItem(`favorites_${response.data.id}`, JSON.stringify(favorites));
+            } catch (favoritesError) {
+                console.error("Error syncing favorites:", favoritesError);
+                // If favorites sync fails, initialize with empty array
+                localStorage.setItem(`favorites_${response.data.id}`, JSON.stringify([]));
+            }
+            
             navigate('/');
             window.location.reload();
         } catch (error) {
@@ -23,36 +35,102 @@ const Login = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <form onSubmit={handleLogin} style={styles.form}>
-                <h2 style={{textAlign: 'center', color: '#333'}}>Dobrodošli</h2>
-                <input
-                    type="text"
-                    placeholder="Korisničko ime"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    style={styles.input}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Lozinka"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={styles.input}
-                    required
-                />
-                <button type="submit" style={styles.button}>Prijavi se</button>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100vh',
+            background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+            padding: '2rem'
+        }}>
+            <form 
+                onSubmit={handleLogin}
+                style={{
+                    padding: '3rem',
+                    background: 'var(--bg-white)',
+                    borderRadius: 'var(--border-radius)',
+                    boxShadow: 'var(--shadow-lg)',
+                    width: '100%',
+                    maxWidth: '420px'
+                }}
+            >
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <h2 style={{
+                        fontSize: '2rem',
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                        marginBottom: '0.5rem'
+                    }}>
+                        Welcome Back
+                    </h2>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+                        Sign in to access your recipes
+                    </p>
+                </div>
+                <div style={{ marginBottom: '1.5rem' }}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        style={{
+                            width: '100%',
+                            padding: '0.875rem 1rem',
+                            borderRadius: '8px',
+                            border: '2px solid var(--border-color)',
+                            fontSize: '1rem',
+                            transition: 'var(--transition)',
+                            boxSizing: 'border-box'
+                        }}
+                        onFocus={(e) => {
+                            e.target.style.outline = 'none';
+                            e.target.style.borderColor = 'var(--primary-color)';
+                            e.target.style.boxShadow = '0 0 0 3px rgba(211, 47, 47, 0.1)';
+                        }}
+                        onBlur={(e) => {
+                            e.target.style.borderColor = 'var(--border-color)';
+                            e.target.style.boxShadow = 'none';
+                        }}
+                        required
+                    />
+                </div>
+                <div style={{ marginBottom: '2rem' }}>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{
+                            width: '100%',
+                            padding: '0.875rem 1rem',
+                            borderRadius: '8px',
+                            border: '2px solid var(--border-color)',
+                            fontSize: '1rem',
+                            transition: 'var(--transition)',
+                            boxSizing: 'border-box'
+                        }}
+                        onFocus={(e) => {
+                            e.target.style.outline = 'none';
+                            e.target.style.borderColor = 'var(--primary-color)';
+                            e.target.style.boxShadow = '0 0 0 3px rgba(211, 47, 47, 0.1)';
+                        }}
+                        onBlur={(e) => {
+                            e.target.style.borderColor = 'var(--border-color)';
+                            e.target.style.boxShadow = 'none';
+                        }}
+                        required
+                    />
+                </div>
+                <button 
+                    type="submit" 
+                    className="btn btn-primary"
+                    style={{ width: '100%', justifyContent: 'center' }}
+                >
+                    Sign In
+                </button>
             </form>
         </div>
     );
-};
-
-const styles = {
-    container: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' },
-    form: { padding: '2rem', background: '#fff', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', width: '320px' },
-    input: { width: '100%', padding: '12px', margin: '10px 0', borderRadius: '4px', border: '1px solid #ddd', boxSizing: 'border-box' },
-    button: { width: '100%', padding: '12px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }
 };
 
 export default Login;

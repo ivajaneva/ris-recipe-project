@@ -10,16 +10,18 @@ function Filter(props) {
 
     return (
         <div className="filter">
-            <label>Filter by category: </label>
+            <label>Filter by category:</label>
             <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                <option value="">All</option>
+                <option value="">All Categories</option>
                 <option value="Sweets">Sweets</option>
                 <option value="Salads">Salads</option>
                 <option value="Meat">Meat</option>
                 <option value="Pasta">Pasta</option>
                 <option value="Soup">Soup</option>
             </select>
-            <button onClick={handleApply}>Apply Filter</button>
+            <button className="btn btn-primary" onClick={handleApply}>
+                Apply Filter
+            </button>
         </div>
     );
 }
