@@ -40,6 +40,79 @@ VALUES
      'https://www.themealdb.com/images/media/meals/stpuws1511191310.jpg',
      '500g tomatoes, 1 onion, 2 cloves garlic, 500ml vegetable broth, salt, pepper, olive oil',
      '1. Heat olive oil in a pot and sauté chopped onions and garlic until translucent. 2. Add chopped tomatoes and cook for 5-7 minutes. 3. Pour in vegetable broth and simmer for 10 minutes. 4. Blend the mixture until smooth using a hand blender or in batches in a regular blender. 5. Season with salt and pepper to taste. 6. Serve hot with a drizzle of cream or fresh basil for garnish.');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Chickpea Salad', 'Fresh vegan salad with chickpeas, vegetables and lemon-olive oil dressing. Light and nutritious.', 12,
+     'https://cdn.loveandlemons.com/wp-content/uploads/2023/05/chickpea-salad-1.jpg',
+     '200g chickpeas, 1 cucumber, 2 tomatoes, 1/2 onion, 1 tbsp olive oil, 1 tbsp lemon juice, salt, pepper',
+     '1. Chop vegetables. 2. Mix chickpeas and vegetables in a bowl. 3. Add olive oil, lemon juice, salt and pepper. 4. Toss and serve.',
+     'Salads');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Lentil Soup', 'Simple vegan lentil soup with carrots and onions. Great as a light meal.', 35,
+     'https://cdn.loveandlemons.com/wp-content/uploads/2023/12/lentil-soup-recipe.jpg',
+     '200g lentils, 1 onion, 2 carrots, 2 cloves garlic, 700ml vegetable broth, salt, pepper',
+     '1. Saute onion and garlic. 2. Add carrots and lentils. 3. Pour broth and simmer 25-30 min. 4. Season and serve.',
+     'Soup');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Veggie Omelette', 'Vegetarian omelette with vegetables and cheese. Quick breakfast.', 10,
+     'https://www.allrecipes.com/thmb/bZ0Ts-a3TLKdpts-NeIVH9OMCCI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/5941200-yummy-veggie-omelet-AllrecipesPhot-4x3o-9731d76434de4b7daae40281f56a7a66.jpg',
+     '2 eggs, 50g cheese, 1 tomato, 1/2 onion, salt, pepper',
+     '1. Beat eggs with salt and pepper. 2. Add chopped vegetables. 3. Cook in pan, add cheese, fold and serve.',
+     'Breakfast');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Vegan Buddha Bowl',
+     'Colorful vegan bowl with quinoa, roasted vegetables and tahini dressing.',
+     25,
+     'https://cdn.loveandlemons.com/wp-content/uploads/2020/06/IMG_25462.jpg',
+     '100g quinoa, 1 sweet potato, 1 zucchini, 1 bell pepper, olive oil, salt, pepper, tahini',
+     '1. Cook quinoa according to instructions. 2. Roast chopped vegetables with olive oil. 3. Arrange everything in a bowl and drizzle with tahini.',
+     'Healthy');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Vegan Tomato Pasta',
+     'Simple vegan pasta with tomato sauce, garlic and basil.',
+     20,
+     'https://www.thefieryvegetarian.com/wp-content/uploads/2021/09/vegan-creamy-tomato-pasta-681x1024.jpg',
+     '200g pasta, tomato sauce, 2 cloves garlic, olive oil, basil, salt',
+     '1. Cook pasta. 2. Saute garlic in olive oil. 3. Add tomato sauce and simmer. 4. Mix with pasta and basil.',
+     'Pasta');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Caprese Salad',
+     'Classic Italian vegetarian salad with tomatoes, mozzarella and basil.',
+     10,
+     'https://cdn.loveandlemons.com/wp-content/uploads/2019/08/caprese-salad-recipe.jpg',
+     'tomatoes, mozzarella, fresh basil, olive oil, salt',
+     '1. Slice tomatoes and mozzarella. 2. Arrange on plate with basil. 3. Drizzle with olive oil and season.',
+     'Salads');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Mushroom Risotto',
+     'Creamy vegetarian risotto with mushrooms and Parmesan.',
+     35,
+     'https://cdn.loveandlemons.com/wp-content/uploads/2023/01/mushroom-risotto-recipe.jpg',
+     'rice, mushrooms, onion, vegetable broth, butter, parmesan',
+     '1. Saute onion and mushrooms. 2. Add rice and gradually add broth. 3. Stir until creamy. 4. Add butter and parmesan.',
+     'Dinner');
+
+INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions, category)
+VALUES
+    ('Chocolate Mug Cake', 'Quick sweet dessert made in a mug. Soft and chocolatey.', 7,
+     'https://www.cookingclassy.com/wp-content/uploads/2020/02/chocolate-mug-cake-33.jpg',
+     '4 tbsp flour, 2 tbsp sugar, 2 tbsp cocoa, 1 egg, 3 tbsp milk, 2 tbsp oil',
+     '1. Mix dry ingredients in a mug. 2. Add egg, milk and oil. 3. Mix well. 4. Microwave 1-2 minutes and serve.',
+     'Sweets');
+
 INSERT INTO ingredient (name, calories, protein, carbs, fat, unit) VALUES
 -- Pancakes
 ('flour', 364, 10, 76, 1, '100g'),
@@ -79,6 +152,27 @@ INSERT INTO ingredient (name, calories, protein, carbs, fat, unit) VALUES
 
 -- Tomato Soup
 ('vegetable broth', 5, 0.3, 1, 0, '100ml');
+
+INSERT INTO ingredient (name, calories, protein, carbs, fat, unit) VALUES
+('chickpeas', 164, 8.9, 27.4, 2.6, '100g'),
+('tomatoes', 18, 1.0, 3.9, 0.2, '100g'),
+('lemon juice', 22, 0.3, 6.9, 0.2, '100ml'),
+('lentils', 116, 9.0, 20.0, 0.4, '100g'),
+('carrots', 41, 0.9, 10.0, 0.2, '100g'),
+('cheese', 350, 25.0, 2.0, 28.0, '100g'),
+('quinoa', 120, 4.4, 21.3, 1.9, '100g'),
+('sweet potato', 86, 1.6, 20.1, 0.1, '100g'),
+('zucchini', 17, 1.2, 3.1, 0.3, '100g'),
+('bell pepper', 31, 1.0, 6.0, 0.3, '100g'),
+('tahini', 595, 17.0, 21.0, 53.0, '100g'),
+('pasta', 158, 5.8, 31.0, 0.9, '100g'),
+('mozzarella', 280, 28.0, 3.0, 17.0, '100g'),
+('fresh basil', 23, 3.0, 2.7, 0.6, '10g'),
+('rice', 130, 2.7, 28.0, 0.3, '100g'),
+('mushrooms', 22, 3.1, 3.3, 0.3, '100g'),
+('parmesan', 431, 38.0, 4.0, 29.0, '100g'),
+('cocoa', 228, 19.6, 57.9, 13.7, '100g'),
+('oil', 884, 0.0, 0.0, 100.0, '100g');
 
 INSERT INTO users (username, password) VALUES
 ('nadja', '1234'),
