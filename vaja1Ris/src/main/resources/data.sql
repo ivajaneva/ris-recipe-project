@@ -29,7 +29,7 @@ VALUES
      '1. Preheat oven to 180°C. 2. Peel and cook the pumpkin until soft, then mash. 3. Mix pumpkin with cream, sugar, eggs, and spices. 4. Pour mixture into prepared pie crust. 5. Bake for 50-60 minutes until set. 6. Let cool and serve.');
 INSERT INTO recipe (name, description, duration, image_url, ingredients, instructions)
 VALUES
-    ('Carbonara', '''Classic Italian pasta dish with a creamy sauce made from eggs, cheese, pancetta, and pepper.', 25,
+    ('Carbonara', 'Classic Italian pasta dish with a creamy sauce made from eggs, cheese, pancetta, and pepper.', 25,
      'https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg',
      '200g spaghetti, 100g pancetta, 2 eggs, 50g grated Parmesan, black pepper, salt',
      '1. Boil the spaghetti until al dente. 2. Fry the pancetta until crispy. 3. Beat the eggs and mix with Parmesan. 4. Combine pasta with pancetta and remove from heat. 5. Quickly mix in the egg-cheese mixture. 6. Serve immediately with black pepper.');
@@ -66,7 +66,7 @@ INSERT INTO ingredient (name, calories, protein, carbs, fat, unit) VALUES
 ('black olives', 115, 0.8, 6, 11, '100g'),
 ('oregano', 306, 11, 64, 10, '10g'),
 
--- Pumpkin Pie
+-- Pumpkin PieA
 ('pumpkin', 26, 1, 6.5, 0.1, '100g'),
 ('cream', 340, 2, 3, 36, '100ml'),
 ('cinnamon', 247, 4, 81, 1.2, '10g'),
@@ -79,4 +79,10 @@ INSERT INTO ingredient (name, calories, protein, carbs, fat, unit) VALUES
 
 -- Tomato Soup
 ('vegetable broth', 5, 0.3, 1, 0, '100ml');
+
+INSERT INTO users (username, password) VALUES
+('nadja', '1234'),
+('iva', '1234'),
+('veljko', '1234');
+
 
