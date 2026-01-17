@@ -1,3 +1,4 @@
+// RecipeItem.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { isFavorite, toggleFavorite } from "../utils/favorites";
@@ -21,9 +22,9 @@ function RecipeItem({ recipe }) {
     const handleHeartClick = async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
+
         if (!user || isToggling) return;
-        
+
         setIsToggling(true);
         try {
             const newFavoriteState = await toggleFavorite(user.id, recipe.id, favorite);
@@ -53,14 +54,24 @@ function RecipeItem({ recipe }) {
                 </div>
                 <div className="recipe-card-content">
                     <h2>{recipe.name}</h2>
+
                     <div className="recipe-card-meta">
                         <span className="recipe-card-meta-item">
                             ⏱️ {recipe.duration} min
                         </span>
                     </div>
+
                     <p className="description">{truncateText(recipe.description, 120)}</p>
+
                     {recipe.category && (
                         <span className="recipe-card-category">{recipe.category}</span>
+                    )}
+
+                    {/* Blue Label Badge */}
+                    {recipe.label && (
+                        <span className={`recipe-label ${recipe.label.toLowerCase()}`}>
+                            {recipe.label}
+                        </span>
                     )}
                 </div>
             </Link>

@@ -484,7 +484,7 @@ function RecipeDetails() {
                             <p className="recipe-meta"><strong>Duration:</strong> {recipe.duration} minutes</p>
                             <p className="recipe-description">{recipe.description}</p>
                             <p className="recipe-category"><strong>Category:</strong> {recipe.category || "No category"}</p>
-
+                            <p className="recipe-label">{recipe.label}</p>
                             {portionsInput}
                         </div>
                     </div>

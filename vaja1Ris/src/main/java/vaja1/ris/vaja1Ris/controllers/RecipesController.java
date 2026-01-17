@@ -20,12 +20,20 @@ public class RecipesController {
     private RecipesDao recipesDao;
 
     @GetMapping
-    public List<Recipe> getRecipes(@RequestParam(required = false) String category) {
-        if (category != null && !category.isEmpty()) {
+    public List<Recipe> getRecipes(
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String label
+    ) {
+        if ((category != null && !category.isEmpty()) && (label != null && !label.isEmpty())) {
+            return recipesDao.getAllByCategoryAndLabel(category, label);
+        } else if (label != null && !label.isEmpty()) {
+            return recipesDao.findByLabel(label);
+        } else if (category != null && !category.isEmpty()) {
             return recipesDao.getAllByCategory(category);
         }
         return recipesDao.findAll();
     }
+
 
 
     @GetMapping("/{id}")

@@ -81,8 +81,7 @@ public class RecipeControllerReadTest {
                 .thenReturn(Collections.emptyList());
 
         // call the controller
-        List<Recipe> result = recipesController.getRecipes(category);
-
+        List<Recipe> result = recipesController.getRecipes(category, null);
         // Assert verify the empty result
         Assertions.assertNotNull(result);
         Assertions.assertTrue(result.isEmpty());

@@ -15,7 +15,7 @@ public class Recipe {
 
     String name;
     String description;
-
+    private String label;
     private int duration; // minutes
     private String imageUrl;
     @Column(length = 1000)
@@ -25,6 +25,31 @@ public class Recipe {
     private String category;
     public Recipe() {}
     private static final int MAX_DURATION = 1440;
+    public Recipe(String name, String description, int duration, String imageUrl, String ingredients,String instructions,String category,String label) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Recipe name must not be empty");
+        }
+
+        if (duration < 1) {
+            throw new IllegalArgumentException("Duration must be at least 1 minute");
+        }
+
+        if (duration > MAX_DURATION) {
+            throw new IllegalArgumentException("Duration must not exceed 1440 minutes");
+        }
+
+        if (category == null || category.trim().isEmpty()) {
+            throw new IllegalArgumentException("Category must not be empty");
+        }
+        this.name = name;
+        this.description = description;
+        this.duration = duration;
+        this.imageUrl = imageUrl;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this.category = category;
+        this.label = label;
+    }
     public Recipe(String name, String description, int duration, String imageUrl, String ingredients,String instructions,String category) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Recipe name must not be empty");
@@ -48,6 +73,7 @@ public class Recipe {
         this.ingredients = ingredients;
         this.instructions = instructions;
         this.category = category;
+
     }
     public Long getId() {
         return id;
@@ -111,5 +137,13 @@ public class Recipe {
 
     public String getCategory() {
         return category;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }
